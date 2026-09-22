@@ -5,7 +5,7 @@
 #include "driver/gpio.h"
 #include "esp_log.h"
 
-#define PIR_PIN GPIO_NUM_13
+#define PIR_PIN GPIO_NUM_33
 static const char *TAG = "MOTION_TASK";
 
 void vMotionTask(void *pvParameters) {

@@ -1,14 +1,17 @@
 {
   "version": 1,
-  "author": "Guido Manfred G. Mejos",
+  "author": "BCA152 Student",
   "editor": "wokwi",
   "parts": [
     { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -60, "left": 250, "attrs": {} },
+
     { "type": "wokwi-photoresistor-sensor", "id": "ldr", "top": -60, "left": 30, "attrs": {} },
     { "type": "wokwi-buzzer", "id": "buzzer", "top": -60, "left": 480, "attrs": {} },
+
     { "type": "wokwi-dht22", "id": "dht", "top": 180, "left": -40, "attrs": {} },
     { "type": "board-ssd1306", "id": "oled", "top": 180, "left": 250, "attrs": {} },
     { "type": "wokwi-pir-motion-sensor", "id": "pir", "top": 180, "left": 500, "attrs": {} },
+
     { "type": "wokwi-ky-040", "id": "encoder", "top": 420, "left": 250, "attrs": {} }
   ],
   "connections": [
