@@ -16,7 +16,7 @@ AlarmState evaluateTemperature(float temp) {
 #include "driver/gpio.h"
 #include "esp_log.h"
 
-#define BUZZER_PIN GPIO_NUM_14
+#define BUZZER_PIN GPIO_NUM_25
 
 static const char *TAG = "ALARM_TASK";
 
