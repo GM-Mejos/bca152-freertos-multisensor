@@ -35,7 +35,7 @@ Developed for **BCA152 Microcontrollers**, Mindanao State University – Iligan 
 
 ## System Architecture
 
-![System Architecture Diagram](docs/images/architecture-diagram.jpg)
+![System Architecture Diagram](docs/images/architecture-diagram.png)
 
 ---
 
@@ -54,7 +54,7 @@ Developed for **BCA152 Microcontrollers**, Mindanao State University – Iligan 
 
 ## System State Machine
 
-![System State Machine Diagram](docs/images/state-machine-diagram.jpg)
+![System State Machine Diagram](docs/images/state-machine-diagram.png)
 
 The system boots in the **ACTIVE** state. `MotionTask` monitors the PIR sensor; if no motion is detected for a continuous 15-second window, the system invokes `evaluateSystemState()` and transitions to **INACTIVE** (blanks OLED to conserve power). Any motion detected on the PIR sensor or interaction with the rotary encoder immediately returns the system to **ACTIVE**.
 
