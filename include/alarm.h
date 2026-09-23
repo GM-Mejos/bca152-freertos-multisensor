@@ -1,21 +1,19 @@
 #ifndef ALARM_H
 #define ALARM_H
 
-#define TEMP_LOW_LIMIT  18.0f
-#define TEMP_HIGH_LIMIT 30.0f
-#define BUZZER_PIN      25
-
 enum class AlarmState {
     NORMAL,
     LOW_TEMPERATURE,
     HIGH_TEMPERATURE
 };
 
-// Pure testable decision logic (Section 30)
-AlarmState evaluateTemperature(float temperature);
+constexpr float TEMP_THRESHOLD_LOW = 18.0f;
+constexpr float TEMP_THRESHOLD_HIGH = 30.0f;
 
-void alarmInit(void);
-void alarmTask(void *pvParameters);
+AlarmState evaluateTemperature(float temp);
+
+#ifndef UNIT_TESTING
 void vAlarmTask(void *pvParameters);
+#endif
 
 #endif // ALARM_H
