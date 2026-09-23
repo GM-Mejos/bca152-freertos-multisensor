@@ -21,9 +21,9 @@ extern "C" void app_main(void) {
         xSemaphoreGive(serialMutex);
     }
 
-    // Task Priorities: Motion=3, Input=3, Sensor=2, Alarm=2, Display=1
+    // Section 36: Priorities (Motion=3, Input=3, Sensor=2, Alarm=2, Display=1)
     xTaskCreate(vMotionTask,  "MotionTask",  3072, NULL, 3, NULL);
-    xTaskCreate(inputTask,    "InputTask",   2048, NULL, 3, NULL);
+    xTaskCreate(vInputTask,   "InputTask",   2048, NULL, 3, NULL);
     xTaskCreate(vSensorTask,  "SensorTask",  3072, NULL, 2, NULL);
     xTaskCreate(vAlarmTask,   "AlarmTask",   2048, NULL, 2, NULL);
     xTaskCreate(vDisplayTask, "DisplayTask", 3072, NULL, 1, NULL);

@@ -1,10 +1,7 @@
 #ifndef SENSORS_H
 #define SENSORS_H
 
-#ifndef UNIT_TESTING
-#include "driver/gpio.h"
-#define DHT_PIN GPIO_NUM_4
-#endif
+#include <stdbool.h>
 
 struct SensorData {
     float temperature;
@@ -14,7 +11,6 @@ struct SensorData {
 };
 
 #ifndef UNIT_TESTING
-bool read_dht22(float *temp, float *humidity);
 void vSensorTask(void *pvParameters);
 #endif
 

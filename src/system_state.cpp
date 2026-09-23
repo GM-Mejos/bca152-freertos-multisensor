@@ -1,11 +1,13 @@
 #include "system_state.h"
 
-SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedInactiveSeconds) {
+SystemState g_systemState = SystemState::ACTIVE;
+
+SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedInactive, uint32_t timeoutLimit) {
     if (currentState == SystemState::ACTIVE) {
         if (motionDetected) {
             return SystemState::ACTIVE;
         }
-        if (elapsedInactiveSeconds >= INACTIVITY_TIMEOUT_SECONDS) {
+        if (elapsedInactive >= timeoutLimit) {
             return SystemState::INACTIVE;
         }
         return SystemState::ACTIVE;

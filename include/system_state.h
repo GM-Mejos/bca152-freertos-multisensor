@@ -2,6 +2,7 @@
 #define SYSTEM_STATE_H
 
 #include <stdint.h>
+#include <stdbool.h>
 
 enum class SystemState {
     ACTIVE,
@@ -10,7 +11,9 @@ enum class SystemState {
 
 constexpr uint32_t INACTIVITY_TIMEOUT_SECONDS = 15;
 
-SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedInactiveSeconds);
+extern SystemState g_systemState;
+
+SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedInactive, uint32_t timeoutLimit = 15);
 
 #ifndef UNIT_TESTING
 void vStateTask(void *pvParameters);
