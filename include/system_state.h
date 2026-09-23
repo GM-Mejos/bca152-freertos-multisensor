@@ -2,18 +2,18 @@
 #define SYSTEM_STATE_H
 
 #include <stdint.h>
-#include <stdbool.h>
 
 enum class SystemState {
     ACTIVE,
     INACTIVE
 };
 
-extern SystemState g_systemState; // Export system state variable
+constexpr uint32_t INACTIVITY_TIMEOUT_SECONDS = 15;
 
-SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedTimeMs, uint32_t timeoutMs = 10000);
+SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedInactiveSeconds);
 
-void systemStateInit(void);
-void systemStateTask(void *pvParameters);
+#ifndef UNIT_TESTING
+void vStateTask(void *pvParameters);
+#endif
 
 #endif // SYSTEM_STATE_H

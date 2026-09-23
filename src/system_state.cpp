@@ -1,16 +1,11 @@
 #include "system_state.h"
-#include <stdint.h>
-#include <stdbool.h>
 
-SystemState g_systemState = SystemState::ACTIVE;
-
-// Pure testable decision logic (compiled for Native Tests and ESP32)
-SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedTimeMs, uint32_t timeoutMs) {
+SystemState evaluateSystemState(SystemState currentState, bool motionDetected, uint32_t elapsedInactiveSeconds) {
     if (currentState == SystemState::ACTIVE) {
         if (motionDetected) {
             return SystemState::ACTIVE;
         }
-        if (elapsedTimeMs >= timeoutMs) {
+        if (elapsedInactiveSeconds >= INACTIVITY_TIMEOUT_SECONDS) {
             return SystemState::INACTIVE;
         }
         return SystemState::ACTIVE;
@@ -23,19 +18,14 @@ SystemState evaluateSystemState(SystemState currentState, bool motionDetected, u
 }
 
 #ifndef UNIT_TESTING
-
+#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "rtos_objects.h"
 
-void systemStateInit(void) {
-    // Initialization if needed
-}
-
-void systemStateTask(void *pvParameters) {
+void vStateTask(void *pvParameters) {
     while (1) {
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
-
-#endif // UNIT_TESTING
+#endif
